@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,14 +35,43 @@ namespace double_linked_list
 
             if (START == null || nim<= START.noMhs) 
             {
-                if ((START != null) && (nim == START.noMhas))
+                if ((START != null) && (nim == START.noMhs))
                 {
-                    Console.WriteLine("\nDuplicate number not allowd")
+                    Console.WriteLine("\nDuplicate number not allowd");
+                    return;
                 }
+                newNode.next = START;
+                if (START != null)
+                    START.prev = newNode;
+                newNode.prev = null;
+                START = newNode;
+                return;
                 {
 
                 }
             }
+            Node previous, current;
+            for (current=previous = START;
+                current ! = null && nim >= current.noMhs
+                previous = curretnt, current = current.next) 
+            {
+                if (nim == current.noMhs) 
+                {
+                    Console.WriteLine("\nDuplicate roll number not allowed");
+                    return;
+                }
+                newNode.next = current;
+                newNode.prev =previous;
+                if(current == null)
+                {
+                    newNode.prev = null;
+                    newNode.next = newNode;
+                    return;
+                }
+                current.prev = newNode;
+                previous.next = newNode;
+            }
+            public bool search(int rollNo, ref Node pre)
         }
     }
     internal class Program
